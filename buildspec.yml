@@ -13,6 +13,6 @@ phases:
     - codeql database create --language=java $CODEBUILD_SRC_DIR/java-database --overwrite --command='mvn clean install'
     - touch example.sarif
     - codeql database analyze $CODEBUILD_SRC_DIR/java-database --format=sarif-latest --sarif-category=java --output=example.sarif
-    - echo "$TOKEN" | codeql github upload-results --repository=keerthana2022/simple-java-project --ref=refs/heads/master --sarif=example.sarif --github-auth-stdin
+    - echo "$github_token" | codeql github upload-results --repository=keerthana2022/simple-java-project --ref=refs/heads/master --sarif=example.sarif --github-auth-stdin
     
     
